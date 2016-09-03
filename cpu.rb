@@ -18,13 +18,13 @@ class CPU8
 				@v_reg[instruction[1].to_i(16)] = instruction[2..3]		
 				puts "instrucion is #{instruction} regv#{instruction[1].to_i(16)} = #{@v_reg[instruction[1].to_i(16)]}"
 			when '1'
-			return_addr = i
-			i = instruction[1..3].to_i(16)-2
-			puts "instrucion is #{instruction} return addr is #{return_addr} current i = #{i}"
+				return_addr = i
+				i = instruction[1..3].to_i(16)-2
+				puts "instrucion is #{instruction} return addr is #{return_addr} current i = #{i}"
 			when '2'
-			return_stack.push(i)
-			i = instruction[1..3].to_i(16)-2
-			puts "instrucion is #{instruction} jump return addr is #{return_stack.last()} current i = #{i}"
+				return_stack.push(i)
+				i = instruction[1..3].to_i(16)-2
+				puts "instrucion is #{instruction} jump return addr is #{return_stack.last()} current i = #{i}"
 			end	
 		
 			i = i + 2				
