@@ -23,6 +23,21 @@ class CPU8
 				return_stack.push(i)
 				i = instruction[1..3].to_i(16)-2
 				puts "instrucion is #{instruction} jump return addr is #{return_stack.last()} current i = #{i}"
+			when '3'
+				if @v_reg[insturcion[1].to_i(16)] == instruction[2..3] then
+					i = i + 2
+					puts "instrucion is #{instruction} regv#{instruction[1].to_i(16)} = #{@v_reg[instruction[1].to_i(16)]} and #{instruction[2..3]} == So Skipping"
+				end
+			when '4'
+				if @v_reg[insturcion[1].to_i(16)] != instruction[2..3] then
+					i = i + 2
+					puts "instrucion is #{instruction} regv#{instruction[1].to_i(16)} = #{@v_reg[instruction[1].to_i(16)]} and #{instruction[2..3]} != So Skipping"
+				end
+			when '5'
+				if @v_reg[insturcion[1].to_i(16)] == @v_reg[insturcion[2].to_i(16)] then
+					i = i + 2
+					puts "instrucion is #{instruction} regv#{instruction[1].to_i(16)} = #{@v_reg[instruction[1].to_i(16)]} and regv#{instruction[2].to_i(16)} = #{@v_reg[instruction[2].to_i(16)]} == So Skipping"
+				end			
 			when '6'
 				@v_reg[instruction[1].to_i(16)] = instruction[2..3]		
 				puts "instrucion is #{instruction} regv#{instruction[1].to_i(16)} = #{@v_reg[instruction[1].to_i(16)]}"
